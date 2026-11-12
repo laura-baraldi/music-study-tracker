@@ -7,7 +7,7 @@ const {
 const {
     displayPracticeReportTypes
 } = require(
-    "../practice-report-types.js"
+    "../frontend/js/features/practice-report/practice-report-types.js"
 );
 
 let elements;

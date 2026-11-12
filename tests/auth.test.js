@@ -46,7 +46,7 @@ window.addEventListener(
 );
 
 
-require("../auth.js");
+require("../frontend/js/core/auth.js");
 
 
 async function waitForAsyncCode() {

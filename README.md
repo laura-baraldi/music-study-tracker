@@ -316,25 +316,42 @@ The query results are converted into the report structure and then passed to the
 
 ## Frontend Structure
 
-The frontend uses vanilla JavaScript and separates responsibilities into dedicated files.
-
-Important files include:
+The frontend uses vanilla JavaScript and keeps the root `index.html` as the application entry point. Shared functionality is separated from feature-specific code.
 
 ```text
-api.js
-auth.js
-calendar.js
-categories.js
-collections.js
-dictations.js
-dictation-types.js
-sidebar.js
-practice-report.js
-practice-report-months.js
-practice-report-types.js
-practice-report-categories.js
-practice-report-insights.js
-practice-report-ai.js
+frontend/
+├── assets/
+│   └── favicon.png
+├── styles/
+│   ├── base.css
+│   ├── auth.css
+│   ├── calendar.css
+│   ├── sidebar.css
+│   └── practice-report.css
+└── js/
+    ├── core/
+    │   ├── api.js
+    │   └── auth.js
+    └── features/
+        ├── calendar/
+        │   └── calendar.js
+        ├── categories/
+        │   └── categories.js
+        ├── collections/
+        │   └── collections.js
+        ├── dictations/
+        │   └── dictations.js
+        ├── dictation-types/
+        │   └── dictation-types.js
+        ├── navigation/
+        │   └── sidebar.js
+        └── practice-report/
+            ├── practice-report.js
+            ├── practice-report-ai.js
+            ├── practice-report-categories.js
+            ├── practice-report-insights.js
+            ├── practice-report-months.js
+            └── practice-report-types.js
 ```
 
 Responsibilities include:
@@ -354,20 +371,11 @@ Responsibilities include:
 - `practice-report-insights.js` – deterministic insight rendering
 - `practice-report-ai.js` – AI analysis rendering
 
+The files remain classic browser scripts loaded by the root `index.html`; the frontend does not use ES module imports.
+
 ## CSS Structure
 
-Styles are separated by responsibility rather than being stored in one large stylesheet.
-
-```text
-styles/
-├── base.css
-├── auth.css
-├── calendar.css
-├── sidebar.css
-└── practice-report.css
-```
-
-This keeps general application styles, authentication, calendar components, navigation, and Practice Report styling independent from one another.
+Stylesheets are located in `frontend/styles/` and separated by responsibility. This keeps general application styles, authentication, calendar components, navigation, and Practice Report styling independent from one another.
 
 ## Backend Structure
 
@@ -491,12 +499,12 @@ The Express API uses `express-rate-limit` to reduce excessive traffic, protect d
 
 The current production limits are:
 
-| Request type | Limit |
-| --- | ---: |
-| General API traffic | 100 requests per minute |
-| Write operations | 30 requests per minute |
-| Practice Report requests | 30 requests per minute |
-| AI analysis requests | 5 requests per minute |
+| Request type             |                   Limit |
+| ------------------------ | ----------------------: |
+| General API traffic      | 100 requests per minute |
+| Write operations         |  30 requests per minute |
+| Practice Report requests |  30 requests per minute |
+| AI analysis requests     |   5 requests per minute |
 
 A general limiter is applied across the API as a safety net.
 
@@ -648,8 +656,6 @@ psql "$ADMIN_DATABASE_URL" -v ON_ERROR_STOP=1 -f database/migrations/004_archive
 ```
 
 Administrative credentials should be used when applying migrations, while the deployed application uses the restricted runtime database role.
-
-Future schema changes should be implemented as additional numbered migration files rather than modifying already-applied migrations.
 
 Docker can be used to run PostgreSQL tools and apply migrations without requiring a native PostgreSQL installation.
 
@@ -916,7 +922,7 @@ Netlify / Vercel deployment
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/laurabaraldi98-lgtm/music-study-tracker.git
+git clone https://github.com/laura-baraldi/music-study-tracker.git
 cd music-study-tracker
 ```
 
@@ -1010,7 +1016,7 @@ The current local CORS configuration supports:
 http://127.0.0.1:5500
 ```
 
-When the frontend runs locally, `api.js` automatically uses the local backend instead of the deployed Vercel endpoint.
+When the frontend runs locally, `frontend/js/core/api.js` automatically uses the local backend instead of the deployed Vercel endpoint.
 
 ## Project Background
 

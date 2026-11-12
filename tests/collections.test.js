@@ -90,7 +90,7 @@ const consoleErrorSpy = jest
     .spyOn(console, "error")
     .mockImplementation(() => { });
 
-require("../collections.js");
+require("../frontend/js/features/collections/collections.js");
 
 async function waitForAsyncCode() {
     await Promise.resolve();

@@ -53,7 +53,7 @@ describe("sidebar", () => {
 
         jest.resetModules();
 
-        require("../sidebar.js");
+        require("../frontend/js/features/navigation/sidebar.js");
 
         sidebar = document.getElementById("sidebar");
         sidebarToggle = document.getElementById("sidebar-toggle");

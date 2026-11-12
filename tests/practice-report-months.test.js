@@ -4,7 +4,7 @@ const {
 
 const {
     displayPracticeReportMonths
-} = require("../practice-report-months.js");
+} = require("../frontend/js/features/practice-report/practice-report-months.js");
 
 let elements;
 
