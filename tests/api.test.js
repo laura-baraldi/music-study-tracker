@@ -26,7 +26,7 @@ const {
     deleteDictationTypeFromServer,
     getStatisticsReportFromServer,
     getStatisticsReportAiInsight
-} = require("../api.js");
+} = require("../frontend/js/core/api.js");
 
 
 const API_BASE_URL =

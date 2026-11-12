@@ -22,7 +22,7 @@ beforeAll(() => {
 
     consoleErrorSpy = jest.spyOn(console, "error").mockImplementation(() => { });
 
-    ({ displayPracticeReport } = require("../practice-report.js"));
+    ({ displayPracticeReport } = require("../frontend/js/features/practice-report/practice-report.js"));
 });
 
 beforeEach(() => {

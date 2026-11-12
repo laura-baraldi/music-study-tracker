@@ -1,6 +1,6 @@
 const {
     displayPracticeReportAiInsight
-} = require("../practice-report-ai.js");
+} = require("../frontend/js/features/practice-report/practice-report-ai.js");
 
 beforeEach(() => {
     document.body.innerHTML = `

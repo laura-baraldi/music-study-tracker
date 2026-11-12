@@ -74,7 +74,7 @@ const consoleErrorSpy = jest
 const {
     displayCalendar,
     closeCalendarModal
-} = require("../calendar.js");
+} = require("../frontend/js/features/calendar/calendar.js");
 
 const monthNames = [
     "Gennaio",

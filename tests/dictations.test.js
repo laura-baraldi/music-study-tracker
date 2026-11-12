@@ -103,7 +103,7 @@ const consoleErrorSpy = jest
 
 const {
     displaySavedDictations
-} = require("../dictations.js");
+} = require("../frontend/js/features/dictations/dictations.js");
 
 async function waitForAsyncCode() {
     await Promise.resolve();

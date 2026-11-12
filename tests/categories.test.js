@@ -108,7 +108,7 @@ const consoleErrorSpy = jest
     .spyOn(console, "error")
     .mockImplementation(() => { });
 
-require("../categories.js");
+require("../frontend/js/features/categories/categories.js");
 
 const defaultCategoryRows = [
     {

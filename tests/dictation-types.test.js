@@ -105,7 +105,7 @@ const defaultTypes = [
     }
 ];
 
-require("../dictation-types.js");
+require("../frontend/js/features/dictation-types/dictation-types.js");
 
 async function waitForAsyncCode() {
     await Promise.resolve();
